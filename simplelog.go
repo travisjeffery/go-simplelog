@@ -37,7 +37,7 @@ func New(writer io.Writer, level Level, prefix string) *Logger {
 func (l *Logger) log(level Level, msg string, args ...interface{}) error {
 	l.Lock()
 	defer l.Unlock()
-	if level > l.Level {
+	if l.Level > level {
 		return nil
 	}
 	ts := time.Now().Format("2006-01-02 15:04:05")
